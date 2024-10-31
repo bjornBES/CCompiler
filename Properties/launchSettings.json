@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "CCompiler": {
+      "commandName": "Project",
+      "commandLineArgs": "-i ./cSrc/Src.c",
+      "workingDirectory": "./"
+    }
+  }
+}

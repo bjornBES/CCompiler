@@ -1,0 +1,11 @@
+.global _main:
+	push            	BP
+	mov             	BP,	SP
+	push            	0
+	push            	32768
+	pop             	BP
+	mov             	A,	1
+	ret             	0
+	sub             	SP,	2
+	pop             	BP
+	mov             	A,	1
