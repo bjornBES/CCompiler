@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using CCompiler.tokenizer;
+using System.Text.Json;
 
 public class Program
 {
@@ -34,25 +35,26 @@ public class Program
         }
 
         string FileContents = File.ReadAllText(InputPath).Replace(Environment.NewLine, "\n");
-
         Tokenizer tokenizer = new Tokenizer();
-        Token[] tokens = tokenizer.Build(FileContents).ToArray();
-
+        tokenizer.Build(FileContents);
+        Token[] tokens = tokenizer.m_tokens.ToArray();
+        
         string foramt = "";
         for (int i = 0; i < tokens.Length; i++)
         {
-            foramt += tokens[i].FormatToken() + "\n";
+            foramt += tokens[i].ToString() + "\n";
         }
         File.WriteAllText("./tokens.txt", foramt);
-
+        
+        /*
         Parser parser = new Parser();
         NodeProg nodeProg = parser.Parse_Prog(tokens);
 
         Generator generator = new Generator();
         string[] output = generator.Gen_prog(nodeProg);
 
-
         File.WriteAllLines("./a.txt", output);
+         */
     }
 
     static int GetInput(string[] argument)
